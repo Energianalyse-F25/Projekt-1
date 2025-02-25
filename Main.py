@@ -48,48 +48,17 @@ plt.tight_layout()
 #plt.show()
 
 
-###### Task 1.1 ######
+
 # find mean spot price of each year
 DK2_df_hour_year = DK2_df.groupby(['Year','HourOfDay']).agg({'SpotPriceDKK': 'mean'}).reset_index()
 
-"""# mean spot price for 2019
-mean_prices_2019 = DK2_df_hour_year.loc[(DK2_df_hour_year["Year"] == 2019), "SpotPriceDKK"].values
 
-# initiate subplots
-fig, axs = plt.subplots(2,3)
-
-# plot for 2019
-axs[0,0].bar(list(range(1,25)), mean_prices_2019)
-axs[0,0].set_xlabel("Hour of day")
-axs[0,0].set_ylabel("Average spot price (DKK/MWh)")
-axs[0,0].set_title("Average hourly spot prices in 2019")
-axs[0,0].grid(alpha=0.25)
-#axs[0,0].set_tightlayout()
-
-# mean spot price for 2020
-mean_prices_2020 = DK2_df_hour_year.loc[(DK2_df_hour_year["Year"] == 2020), "SpotPriceDKK"].values
-
-# plot for 2019
-axs[0,1].figure(figsize=(10, 6))
-axs[0,1].subplot()
-axs[0,1].bar(list(range(1,25)), mean_prices_2020)
-axs[0,1].set_xlabel("Hour of day")
-axs[0,1].set_ylabel("Average spot price (DKK/MWh)")
-axs[0,1].set_title("Average hourly spot prices in 2020")
-axs[0,1].grid(alpha=0.25)
-#axs[0,1].set_tightlayout()
-
-
-
-plt.show()"""
-
-
-# Defines the years we want to plot
+# defines the years we want to plot
 years_to_plot = [2019, 2020, 2021, 2022, 2023]
 
-# Creates a figure with 2 rows and 3 columns
+# creates a figure with 2 rows and 3 columns
 fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(10, 5))
-axs = axs.flatten()  # Flatten the array for easy iteration
+axs = axs.flatten()  # flattens the array to make iteration easy
 
 # for-loop over the years and corresponding subplot axes
 for i, year in enumerate(years_to_plot):
@@ -101,7 +70,6 @@ for i, year in enumerate(years_to_plot):
     axs[i].grid(alpha=0.25)
 
 # the 2x3 grid provides 6 plots but we only have 5 years so we have to hide the last unused subpot
-#if len(years_to_plot) < len(axs):
 axs[-1].set_visible(False)
 
 plt.tight_layout()
